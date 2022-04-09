@@ -6,7 +6,7 @@ AU335 Course Project
 
 - [`code/`](./code/)
   - [`reslut/`](./code/result/): Recognition results.
-  - [`templates/`](./code/templates/): Templates images.
+  - [`templates/`](./code/templates/): Templates characters images set.
   - [`solution.m`](./code/solution.m): Top-level recognition code (you can run it directly to get recognition results).
   - [`recognize.m`](./code/recognize.m): Tool function (recognize well-located license plates).
   - [`myeasy.m`](./code/myeasy.m): Easy level code.
@@ -55,11 +55,11 @@ licenseNumber = mydifficult(path,task_id,Name,Value)
   - _type_: integer (only 1,2,3 are valid)
   - _example_: `1` (2-1.jpg or 3-1.jpg)
 - **name-value pair**
-  - **WhiteCountPerColumnThreshold**: threshold for character segmentation in the [recognition.m](./code/recognize.m) function (==default: 5==)
+  - **WhiteCountPerColumnThreshold**: threshold for character segmentation in the [recognition.m](./code/recognize.m) function (_default: 5_)
     - _type_: double
     - _example_: `"WhiteCountPerColumnThreshold",10`
     - _note_: you can change it as you want, but I'm _not sure_ whether it will work properly :D.
-  - **verbose**: whether to print out the detailed results (==default: true==)
+  - **verbose**: whether to print out the detailed results (_default: true_)
     - _type_: logical
     - _example_: `"verbose",false`
 
