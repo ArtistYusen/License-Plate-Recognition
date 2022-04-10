@@ -110,9 +110,10 @@ function licenseNumber = recognize(licensePlate,license,options)
   % 车牌识别
   licenseNumber = '';
   for p=1:length(regions)
-      % Extract the letter
+      % 提取字符
       letterImage = licenseNumberROI(:,startIdx(p):endIdx(p));
-      % Compare to templates
+      
+      % 字符识别
       distance = zeros(1,length(templates));
       for t=1:length(templates)    
           candidateImageRe = imresize(candidateImage{t,2},size(letterImage));

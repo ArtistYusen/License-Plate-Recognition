@@ -24,7 +24,7 @@
 % verbose
 % difficult1 = recoDifficult("../images/difficult/3-1.jpg",1)
 % difficult2 = recoDifficult("../images/difficult/3-2.jpg",2)
-difficult3 = recoDifficult("../images/difficult/3-3.jpg",3)
+% difficult3 = recoDifficult("../images/difficult/3-3.jpg",3)
 
 % non-verbose
 % difficult1 = recoDifficult("../images/difficult/3-1.jpg",1,"verbose",false)

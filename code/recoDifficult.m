@@ -32,9 +32,9 @@ function licenseNumber = difficult_1(path,options)
   % Load image
   licensePlate = imread(path);
   licensePlateGray = rgb2gray(licensePlate);
-  [r,g,b] = imsplit(licensePlate);
+  [r,~,b] = imsplit(licensePlate);
   mask = zeros(size(r));
-  mask(find((b>120).*(r<60))) = 1;
+  mask(b>120 & r<60) = 1;
 
   % 掩膜
   gray_mask = double(licensePlateGray).*mask;
@@ -104,7 +104,7 @@ function licenseNumber = difficult_2(path,options)
   licensePlateGray = rgb2gray(licensePlate);
   [r,g,b] = imsplit(licensePlate);
   mask = zeros(size(r));
-  mask(find((b<170).*(r<165).*(g>175))) = 1;
+  mask(b<170 & r<165 & g>175) = 1;
 
   % 掩膜
   gray_mask = double(licensePlateGray).*mask;
@@ -171,9 +171,9 @@ function licenseNumber = difficult_3(path,options)
   % Load image
   licensePlate = imread(path);
   licensePlateGray = rgb2gray(licensePlate);
-  [r,g,b] = imsplit(licensePlate);
+  [r,~,b] = imsplit(licensePlate);
   mask = zeros(size(r));
-  mask(find((b>150).*(r<70))) = 1;
+  mask(b>150 & r<70) = 1;
 
   % 掩膜
   gray_mask = double(licensePlateGray).*mask;
