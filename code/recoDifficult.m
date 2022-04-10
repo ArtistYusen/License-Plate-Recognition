@@ -213,11 +213,11 @@ function licenseNumber = difficult_3(path,options)
   initial_points = [p1; p2; p3; p4];
   target_points = [t1; t2; t3; t4];
 
-  figure, imshow(licensePlate);
-  hold on
-  plot(initial_points(:,1),initial_points(:,2),'r*');
-  plot(target_points(:,1),target_points(:,2),'g*');
-  hold off
+  % figure, imshow(licensePlate);
+  % hold on
+  % plot(initial_points(:,1),initial_points(:,2),'r*');
+  % plot(target_points(:,1),target_points(:,2),'g*');
+  % hold off
 
   tform = fitgeotrans(initial_points, target_points, 'projective');
   licenseWarp = imwarp(licensePlate,tform,'OutputView',imref2d(size(licensePlate)));
