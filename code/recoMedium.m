@@ -1,4 +1,4 @@
-function licenseNumber = mymedium(path,task_id,options) 
+function licenseNumber = recoMedium(path,task_id,options) 
 
   arguments
     path (1,1) string
@@ -52,11 +52,12 @@ function licenseNumber = medium_1(path,options)
   white_area_col_max = max(white_area_col);
   license = licensePlate(white_area_row_min:white_area_row_max,white_area_col_min:white_area_col_max,:);
 
+  if options.verbose
+    figure,imshow(license);
+  end
+
   % 车牌识别
-  licensePlateGray = rgb2gray(license);
-  licensePlateBlur = imgaussfilt(licensePlateGray,4);
-  licensePlateBW = imbinarize(licensePlateBlur);
-  licenseNumber = recognize(licensePlate,licensePlateBW, ...
+  licenseNumber = recognize(licensePlate,license, ...
     "whiteCountPerColumnThreshold",options.whiteCountPerColumnThreshold, ...
     "verbose",options.verbose);
 
@@ -94,11 +95,12 @@ function licenseNumber = medium_2(path,options)
   white_area_col_max = max(white_area_col);
   license = licensePlate(white_area_row_min:white_area_row_max,white_area_col_min:white_area_col_max,:);
 
+  if options.verbose
+    figure,imshow(license);
+  end
+
   % 车牌识别
-  licensePlateGray = rgb2gray(license);
-  licensePlateBlur = imgaussfilt(licensePlateGray,4);
-  licensePlateBW = imbinarize(licensePlateBlur);
-  licenseNumber = recognize(licensePlate,licensePlateBW, ...
+  licenseNumber = recognize(licensePlate,license, ...
     "whiteCountPerColumnThreshold",options.whiteCountPerColumnThreshold, ...
     "verbose",options.verbose);
 
@@ -135,12 +137,13 @@ function licenseNumber = medium_3(path,options)
   white_area_col_min = min(white_area_col);
   white_area_col_max = max(white_area_col);
   license = licensePlate(white_area_row_min:white_area_row_max,white_area_col_min:white_area_col_max,:);
-
+  
+  if options.verbose
+    figure,imshow(license);
+  end
+  
   % 车牌识别
-  licensePlateGray = rgb2gray(license);
-  licensePlateBlur = imgaussfilt(licensePlateGray,4);
-  licensePlateBW = imbinarize(licensePlateBlur);
-  licenseNumber = recognize(licensePlate,licensePlateBW, ...
+  licenseNumber = recognize(licensePlate,license, ...
     "whiteCountPerColumnThreshold",options.whiteCountPerColumnThreshold, ...
     "verbose",options.verbose);
 

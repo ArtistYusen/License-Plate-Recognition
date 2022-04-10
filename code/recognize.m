@@ -1,4 +1,4 @@
-function licenseNumber = recognize(licensePlate,licensePlateBW,options)
+function licenseNumber = recognize(licensePlate,license,options)
 % Recognize the license plate from the given image
 %
 % Author:
@@ -6,7 +6,7 @@ function licenseNumber = recognize(licensePlate,licensePlateBW,options)
 %
 % Input:
 %   licensePlate: the source image
-%   licensePlateBW: the input binary image
+%   license: position of the license plate
 %
 % Output:
 %   licenseNumber: the recognized license plate number
@@ -14,7 +14,7 @@ function licenseNumber = recognize(licensePlate,licensePlateBW,options)
   %% arguments
   arguments
     licensePlate (:,:,3) uint8
-    licensePlateBW logical 
+    license (:,:,3) uint8 
     options.whiteCountPerColumnThreshold (1,1) double = 5
     options.verbose (1,1) logical = true
   end
@@ -22,7 +22,13 @@ function licenseNumber = recognize(licensePlate,licensePlateBW,options)
   whiteCountPerColumnThreshold = options.whiteCountPerColumnThreshold;
   verbose = options.verbose;
 
-  %% 预处理
+  %% 字符分割
+  % 预处理
+  licensePlateGray = im2gray(license);
+  licensePlateBlur = imgaussfilt(licensePlateGray,4);   
+  Threshold = graythresh(licensePlateBlur);
+  licensePlateBW = imbinarize(licensePlateBlur,Threshold);
+
   % 判断是否需要反色处理
   grayAvg = sum(licensePlateBW,"all");
   total = size(licensePlateBW,1)*size(licensePlateBW,2);

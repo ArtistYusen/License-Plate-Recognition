@@ -9,9 +9,9 @@ AU335 Course Project
   - [`templates/`](./code/templates/): Templates characters images set.
   - [`solution.m`](./code/solution.m): Top-level recognition code (you can run it directly to get recognition results).
   - [`recognize.m`](./code/recognize.m): Tool function (recognize well-located license plates).
-  - [`myeasy.m`](./code/myeasy.m): Easy level code.
-  - [`mymedium.m`](./code/mymedium.m): Medium level code.
-  - [`mydifficult.m`](./code/mydifficult.m): Difficult level code.
+  - [`recoEasy.m`](./code/recoEasy.m): Easy level code.
+  - [`recoMedium.m`](./code/recoMedium.m): Medium level code.
+  - [`recoDifficult.m`](./code/recoDifficult.m): Difficult level code.
 - [`images`](./images/)
   - [`easy/`](./images/easy/): Easy level images.
   - [`medium/`](./images/medium/): Medium level images.
@@ -27,21 +27,21 @@ You can directly run the [solution.m](./code/solution.m) file to get recognition
 
 ```matlab
 % Run the code to get recognition results.
-licenseNumber = myeasy(path,Name,Value)
+licenseNumber = recoEasy(path,Name,Value)
 ```
 
 #### Medium level
 
 ```matlab
 % Run the code to get recognition results.
-licenseNumber = mymedium(path,task_id,Name,Value)
+licenseNumber = recoMedium(path,task_id,Name,Value)
 ```
 
 #### Difficult level
 
 ```matlab
 % Run the code to get recognition results.
-licenseNumber = mydifficult(path,task_id,Name,Value)
+licenseNumber = recoDifficult(path,task_id,Name,Value)
 ```
 
 ### Arguments

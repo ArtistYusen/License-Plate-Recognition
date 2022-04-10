@@ -1,5 +1,5 @@
-function licenseNumber = myeasy(path, options)
-%EASY 用于识别easy模式中车牌的简单算法
+function licenseNumber = recoEasy(path, options)
+%RECOEASY 用于识别easy模式中车牌的简单算法
 %   author: Yusen Zheng
 %   input1: path: 车牌图像的路径
 %   option1: whiteCountPerColumnThreshold: 白色像素点数目的阈值
@@ -12,15 +12,8 @@ function licenseNumber = myeasy(path, options)
         options.verbose (1,1) logical = true
     end
 
-    % 灰度、滤波与二值化
     licensePlate = imread(path);
-    licensePlateGray = im2gray(licensePlate);
-    licensePlateBlur = imgaussfilt(licensePlateGray,8);   
-    Threshold = graythresh(licensePlateBlur);
-    licensePlateBW = imbinarize(licensePlateBlur,Threshold);
-
-    % 车牌识别
-    licenseNumber = recognize(licensePlate,licensePlateBW, ...
+    licenseNumber = recognize(licensePlate,licensePlate, ...
         "whiteCountPerColumnThreshold",options.whiteCountPerColumnThreshold, ...
         "verbose",options.verbose);
     

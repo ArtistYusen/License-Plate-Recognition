@@ -1,4 +1,4 @@
-function licenseNumber = mydifficult(path,task_id,options) 
+function licenseNumber = recoDifficult(path,task_id,options) 
 
   arguments
     path (1,1) string
@@ -75,14 +75,17 @@ function licenseNumber = difficult_1(path,options)
 
 
   tform = fitgeotrans(initial_points, target_points, 'projective');
-  license = imwarp(licensePlate,tform,'OutputView',imref2d(size(licensePlate)));
-  license = license(t1(2):t4(2),t1(1):t4(1),:);
+  licenseWarp = imwarp(licensePlate,tform,'OutputView',imref2d(size(licensePlate)));
+  license = licenseWarp(t1(2):t4(2),t1(1):t4(1),:);
+
+  if options.verbose
+    figure, imshow(initial_im);
+    figure, imshow(licenseWarp);
+    figure, imshow(license);
+  end
 
   % 车牌识别
-  licensePlateGray = rgb2gray(license);
-  licensePlateBlur = imgaussfilt(licensePlateGray,4);
-  licensePlateBW = imbinarize(licensePlateBlur);
-  licenseNumber = recognize(licensePlate,licensePlateBW, ...
+  licenseNumber = recognize(licensePlate,license, ...
     "whiteCountPerColumnThreshold",options.whiteCountPerColumnThreshold, ...
     "verbose",options.verbose);
 
@@ -141,14 +144,17 @@ function licenseNumber = difficult_2(path,options)
 
 
   tform = fitgeotrans(initial_points, target_points, 'projective');
-  license = imwarp(licensePlate,tform,'OutputView',imref2d(size(licensePlate)));
-  license = license(t1(2):t4(2),t1(1):t4(1),:);
+  licenseWarp = imwarp(licensePlate,tform,'OutputView',imref2d(size(licensePlate)));
+  license = licenseWarp(t1(2):t4(2),t1(1):t4(1),:);
+
+  if options.verbose
+    figure, imshow(initial_im);
+    figure, imshow(licenseWarp);
+    figure, imshow(license);
+  end
 
   % 车牌识别
-  licensePlateGray = rgb2gray(license);
-  licensePlateBlur = imgaussfilt(licensePlateGray,4);
-  licensePlateBW = imbinarize(licensePlateBlur);
-  licenseNumber = recognize(licensePlate,licensePlateBW, ...
+  licenseNumber = recognize(licensePlate,license, ...
     "whiteCountPerColumnThreshold",options.whiteCountPerColumnThreshold, ...
     "verbose",options.verbose);
 
@@ -207,15 +213,17 @@ function licenseNumber = difficult_3(path,options)
 
 
   tform = fitgeotrans(initial_points, target_points, 'projective');
-  license = imwarp(licensePlate,tform,'OutputView',imref2d(size(licensePlate)));
-  license = license(t1(2):t4(2),t1(1):t4(1),:);
+  licenseWarp = imwarp(licensePlate,tform,'OutputView',imref2d(size(licensePlate)));
+  license = licenseWarp(t1(2):t4(2),t1(1):t4(1),:);
 
+  if options.verbose
+    figure, imshow(initial_im);
+    figure, imshow(licenseWarp);
+    figure, imshow(license);
+  end
 
   % 车牌识别
-  licensePlateGray = rgb2gray(license);
-  licensePlateBlur = imgaussfilt(licensePlateGray,4);
-  licensePlateBW = imbinarize(licensePlateBlur);
-  licenseNumber = recognize(licensePlate,licensePlateBW, ...
+  licenseNumber = recognize(licensePlate,license, ...
     "whiteCountPerColumnThreshold",options.whiteCountPerColumnThreshold, ...
     "verbose",options.verbose);
 
