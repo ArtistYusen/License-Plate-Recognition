@@ -94,19 +94,23 @@ function licenseNumber = recognize(licensePlate,license,options)
       end
   end
 
-  %% 字符识别 //TODO
-  % 导入模板字符
+  %% 字符识别 
+
+  % 导入字符库
   templateDir = fullfile('./templates');
-  templates = dir(fullfile(templateDir,'*.bmp'));
-  
-  candidateImage = cell(length(templates),2);
+  folder = dir(templateDir);
+  folder = folder(3:end); % 去除.和..
+  templates = cell(length(folder),2);
   for p=1:length(templates)
-      [~,fileName] = fileparts(templates(p).name);
-      candidateImage{p,1} = fileName;
-      templatesIm = imread(fullfile(templates(p).folder,templates(p).name));
-      candidateImage{p,2} = imbinarize(uint8(templatesIm));
+      templates{p,1} = folder(p).name;
+      templates{p,2} = cell(length(dir(fullfile(templateDir,folder(p).name)))-2,1);
+      imList = dir(fullfile(templateDir,folder(p).name,'*.png'))';
+      for q=1:length(templates{p,2})
+          templateIm = imread(fullfile(templateDir,folder(p).name,imList(q).name));
+          templates{p,2}{q} = imbinarize(uint8(templateIm));
+      end
   end
-  
+
   % 车牌识别
   licenseNumber = '';
   for p=1:length(regions)
@@ -116,11 +120,14 @@ function licenseNumber = recognize(licensePlate,license,options)
       % 字符识别
       distance = zeros(1,length(templates));
       for t=1:length(templates)    
-          candidateImageRe = imresize(candidateImage{t,2},size(letterImage));
-          distance(t) = abs(sum((letterImage-candidateImageRe).^2,"all"));
+        for s = 1:length(templates{t,2})
+          candidateImageRe = imresize(templates{t,2}{s},size(letterImage));
+          distance(t) = distance(t) + abs(sum((letterImage-candidateImageRe).^2,"all"));
+        end
+        distance(t) = distance(t)/s;
       end
       [~,idx] = min(distance);
-      letter = candidateImage{idx,1};
+      letter = templates{idx,1};
       licenseNumber(end+1) = letter;
   end
 

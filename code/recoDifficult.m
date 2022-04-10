@@ -184,6 +184,8 @@ function licenseNumber = difficult_3(path,options)
   binary_mask = imopen(gray_mask,kernel);
   kernel = strel('rectangle',[20,20]);
   binary_mask = imclose(binary_mask,kernel);
+  kernel = strel('rectangle',[20,20]);
+  binary_mask = imclose(binary_mask,kernel);
 
   % 找到车牌区域
   [white_area_row,white_area_col] = find(binary_mask==255);
@@ -196,12 +198,12 @@ function licenseNumber = difficult_3(path,options)
   % 四点法矫正
   deltax = x1 - x0;
   deltay = size(white_area_row,1) / deltax;
-  offset = 25;
+  offset = 35;
 
-  p1 = [x0+offset, y1-deltay-offset];
+  p1 = [x0+offset, y1-deltay-offset]; %//TODO: 这里的偏移量有点问题
   p2 = [x1, y0];
   p3 = [x0, y1];
-  p4 = [x1-offset, y0+deltay+offset];
+  p4 = [x1-offset, y0+deltay+offset]; %//TODO 这里的偏移量有点问题
 
   t1 = [x0, y1-deltay-offset];
   t2 = [x0+round(1.4*deltax), y1-deltay-offset];
@@ -211,6 +213,11 @@ function licenseNumber = difficult_3(path,options)
   initial_points = [p1; p2; p3; p4];
   target_points = [t1; t2; t3; t4];
 
+  figure, imshow(licensePlate);
+  hold on
+  plot(initial_points(:,1),initial_points(:,2),'r*');
+  plot(target_points(:,1),target_points(:,2),'g*');
+  hold off
 
   tform = fitgeotrans(initial_points, target_points, 'projective');
   licenseWarp = imwarp(licensePlate,tform,'OutputView',imref2d(size(licensePlate)));
