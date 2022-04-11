@@ -5,7 +5,6 @@ AU335 Course Project
 ## Structure
 
 - [`code/`](./code/)
-  - [`reslut/`](./code/result/): Recognition results.
   - [`templates/`](./code/templates/): Templates characters images set.
   - [`solution.m`](./code/solution.m): Top-level recognition code (you can run it directly to get recognition results).
   - [`recognize.m`](./code/recognize.m): Tool function (recognize well-located license plates).
@@ -16,6 +15,7 @@ AU335 Course Project
   - [`easy/`](./images/easy/): Easy level images.
   - [`medium/`](./images/medium/): Medium level images.
   - [`difficult/`](./images/difficult/): Difficult level images.
+- [`reslut/`](./result/): Recognition results.
   
 ## Usage
 

@@ -131,6 +131,6 @@ function licenseNumber = recognize(licensePlate,license,options)
       licenseNumber(end+1) = letter;
   end
 
-  figure,imshow(licensePlate),title(licenseNumber)
+  figure,imshow(licensePlate),title(licenseNumber,'FontSize',20)
 
 end

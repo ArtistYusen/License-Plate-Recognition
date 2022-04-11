@@ -47,7 +47,7 @@ function licenseNumber = difficult_1(path,options)
   binary_mask = imdilate(license_area,kernel);
   kernel = strel('rectangle',[25,25]);
   binary_mask = imclose(binary_mask,kernel);
-  
+
   % 找到车牌区域
   [white_area_row,white_area_col] = find(binary_mask==255);
   y0 = min(white_area_row);
@@ -76,7 +76,7 @@ function licenseNumber = difficult_1(path,options)
 
   tform = fitgeotrans(initial_points, target_points, 'projective');
   licenseWarp = imwarp(licensePlate,tform,'OutputView',imref2d(size(licensePlate)));
-  license = licenseWarp(t1(2):t4(2),t1(1):t4(1),:);
+  license = licenseWarp(t1(2):t4(2),t1(1):t4(1),1:end);
 
   if options.verbose
     figure, imshow(initial_im);
@@ -145,7 +145,7 @@ function licenseNumber = difficult_2(path,options)
 
   tform = fitgeotrans(initial_points, target_points, 'projective');
   licenseWarp = imwarp(licensePlate,tform,'OutputView',imref2d(size(licensePlate)));
-  license = licenseWarp(t1(2):t4(2),t1(1):t4(1),:);
+  license = licenseWarp(t1(2):t4(2),t1(1):t4(1),1:end);
 
   if options.verbose
     figure, imshow(initial_im);
@@ -203,7 +203,7 @@ function licenseNumber = difficult_3(path,options)
   p1 = [x0+offset, y1-deltay-offset]; %//TODO: 这里的偏移量有点问题
   p2 = [x1, y0];
   p3 = [x0, y1];
-  p4 = [x1-offset, y0+deltay+offset]; %//TODO 这里的偏移量有点问题
+  p4 = [x1-offset, y0+deltay+offset]; %//TODO: 这里的偏移量有点问题
 
   t1 = [x0, y1-deltay-offset];
   t2 = [x0+round(1.4*deltax), y1-deltay-offset];
@@ -221,7 +221,7 @@ function licenseNumber = difficult_3(path,options)
 
   tform = fitgeotrans(initial_points, target_points, 'projective');
   licenseWarp = imwarp(licensePlate,tform,'OutputView',imref2d(size(licensePlate)));
-  license = licenseWarp(t1(2):t4(2),t1(1):t4(1),:);
+  license = licenseWarp(t1(2):t4(2),t1(1):t4(1),1:end);
 
   if options.verbose
     figure, imshow(initial_im);
