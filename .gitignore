@@ -1,5 +1,9 @@
-/article/
+/article/*
 /task/
 
 *.mlx
 *tmp*
+
+!/article/main.tex
+!/article/main.pdf
+!/article/img/
