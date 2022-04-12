@@ -16,7 +16,8 @@ AU335 Course Project
   - [`medium/`](./images/medium/): Medium level images.
   - [`difficult/`](./images/difficult/): Difficult level images.
 - [`reslut/`](./result/): Recognition results.
-  
+- [`article/`](./article/): TeX file and pdf file of the paper.
+
 ## Usage
 
 You can directly run the [solution.m](./code/solution.m) file to get recognition results. Or you can use these functions individually.
