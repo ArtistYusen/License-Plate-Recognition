@@ -11,7 +11,8 @@ AU335 Course Project
   - [`recoEasy.m`](./code/recoEasy.m): Easy level code.
   - [`recoMedium.m`](./code/recoMedium.m): Medium level code.
   - [`recoDifficult.m`](./code/recoDifficult.m): Difficult level code.
-- [`images`](./images/)
+  - [`evaluation.m`](./code/evaluation.m): Evaluation code.
+- [`images/`](./images/)
   - [`easy/`](./images/easy/): Easy level images.
   - [`medium/`](./images/medium/): Medium level images.
   - [`difficult/`](./images/difficult/): Difficult level images.

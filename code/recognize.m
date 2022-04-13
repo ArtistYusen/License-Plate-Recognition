@@ -97,7 +97,8 @@ function licenseNumber = recognize(licensePlate,license,options)
   %% 字符识别 
 
   % 导入字符库
-  templateDir = fullfile('./templates');
+  templateDir = fullfile('./templates/');
+%   templateDir = fullfile('./templates.backup/');
   folder = dir(templateDir);
   folder = folder(3:end); % 去除.和..
   templates = cell(length(folder),2);
@@ -105,6 +106,7 @@ function licenseNumber = recognize(licensePlate,license,options)
       templates{p,1} = folder(p).name;
       templates{p,2} = cell(length(dir(fullfile(templateDir,folder(p).name)))-2,1);
       imList = dir(fullfile(templateDir,folder(p).name,'*.png'))';
+%       imList = dir(fullfile(templateDir,folder(p).name,'*.jpg'))';
       for q=1:length(templates{p,2})
           templateIm = imread(fullfile(templateDir,folder(p).name,imList(q).name));
           templates{p,2}{q} = imbinarize(uint8(templateIm));
