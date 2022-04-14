@@ -17,7 +17,7 @@ AU335 Course Project
   - [`medium/`](./images/medium/): Medium level images.
   - [`difficult/`](./images/difficult/): Difficult level images.
 - [`reslut/`](./result/): Recognition results.
-- [`article/`](./article/): TeX file and pdf file of the paper.
+- [`article/`](./article/): Thesis pdf files and illustrations.
 
 ## Usage
 
