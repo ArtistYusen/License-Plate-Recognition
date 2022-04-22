@@ -1,3 +1,7 @@
+%% cmd output format
+warning('off');
+format compact;
+
 %% EASY
 % verbose
 % easy1 = recoEasy("../images/easy/1-1.jpg")

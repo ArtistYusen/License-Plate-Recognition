@@ -1,6 +1,6 @@
 # License-Plate-Recognition
 
-AU335 Course Project
+AU335 Course Project: license plate recognition using a traditional computer vision-based approach.
 
 ## Structure
 
@@ -51,7 +51,7 @@ licenseNumber = recoDifficult(path,task_id,Name,Value)
 #### Input
 
 - **path**: path to the image (by default they are in the images folder)
-  - _type_: string 
+  - _type_: string
   - _example_: `"./images/easy/1.jpg"`
 - **task_id**: task id (which image to recognize)
   - _type_: integer (only 1,2,3 are valid)
@@ -59,7 +59,7 @@ licenseNumber = recoDifficult(path,task_id,Name,Value)
 - **name-value pair**
   - **WhiteCountPerColumnThreshold**: threshold for character segmentation in the [recognition.m](./code/recognize.m) function (_default: 5_)
     - _type_: double
-    - _example_: `"WhiteCountPerColumnThreshold",10`
+    - _example_: `"WhiteCountPerColumnThreshold",3`
     - _note_: you can change it as you want, but I'm _not sure_ whether it will work properly :D.
   - **verbose**: whether to print out the detailed results (_default: true_)
     - _type_: logical
