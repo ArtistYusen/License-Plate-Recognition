@@ -4,5 +4,5 @@
 *.mlx
 *tmp*
 
-!/article/paper.pdf
+!/article/main.pdf
 !/article/img/
