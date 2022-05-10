@@ -1,6 +1,6 @@
 # License-Plate-Recognition
 
-AU335 Course Project: license plate recognition using a traditional computer vision-based approach.
+AU335 Course Project: license plate recognition using a traditional computer vision based approach.
 
 ## Structure
 
